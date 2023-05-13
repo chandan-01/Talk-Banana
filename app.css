@@ -1,3 +1,7 @@
+*{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+}
 #txt-input {
     display: block;
     height: 20vh;
@@ -12,4 +16,25 @@
     height: 20vh;
     padding: 1rem;
     margin: 1rem;
+}
+nav{
+    background-color: rgb(23, 102, 167);
+    height: 10vh;
+    font-size: 2.5rem;
+    text-align: center;
+    padding-top: 1.2rem;
+}
+footer{
+    height: 10vh;
+    background-color: blanchedalmond;
+    text-align: center;
+}
+footer h1{
+    font-size: 2rem;
+    padding: 1.2rem;
+}
+footer p{
+    text-align: center;
+    width: 30vw;
+    display: block;
 }
