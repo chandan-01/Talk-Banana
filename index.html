@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>talkBanana</title>
+    <style>
+        #txt-input {
+            display: block;
+            height: 20vh;
+            width: 50vw;
+            padding: 1rem;
+            margin: 1rem;
+        }
+
+        #outputArea {
+            border: 1px solid black;
+            width: 50vw;
+            height: 20vh;
+            padding: 1rem;
+            margin: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>talk banana</h1>
+    <textarea name="text-nameInput" id="txt-input" placeholder="Enter your sentence in english"></textarea>
+    <button id="btn-translate">Translate</button>
+    <p>Output will show here👇</p>
+    <div id="outputArea"></div>
+</body>
+<script>
+    const btnTranslate = document.querySelector("#btn-translate");
+    const txtInput = document.querySelector("#txt-input");
+    const outputArea = document.querySelector("#outputArea");
+    function constructUrl(text) {
+        return "https://api.funtranslations.com/translate/minion.json?text=" + text;
+    }
+    function doFetch(text) {
+        fetch(constructUrl(text))
+            .then(response => response.json())
+            .then(json => outputArea.innerText = json.contents.translated)
+            .catch(errorHandler);
+    }
+    function errorHandler(error) {
+        console.log("something is wrong with fetching url", error);
+        alert("something wrong with the server try again after some time")
+    }
+    function clickEventHandler() {
+        doFetch(txtInput.value);
+    }
+    btnTranslate.addEventListener("click", clickEventHandler);
+</script>
+
+</html>
